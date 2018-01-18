@@ -42,7 +42,7 @@ namespace lucky_number_model.Controllers
 
             // TODO: Charge the cost of a spin (subtract 1 from the Balance)
 
-
+            lucky.Balance -= 1;
 
             // TODO: Assign a random value between 1 and 9 to three local variables, a, b, and c
             int a=0, b=0, c=0;
