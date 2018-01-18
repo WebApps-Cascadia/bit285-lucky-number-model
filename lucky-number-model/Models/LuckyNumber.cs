@@ -17,5 +17,8 @@ namespace lucky_number_model.Models
         public decimal Balance { get; set; } // the balance for this game
 
         public Boolean isWinner { get; set; } // a flag for when the lucky number matches the spin
+
+        public string Message { get; set; }  // a message for a winner
+
     }
 }
