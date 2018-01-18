@@ -14,8 +14,22 @@ namespace lucky_number_model.Models
         public int Number { get; set; } // the user's choice of a lucky number
 
         [Required]
-        public decimal Balance { get; set; } // the balance for this game
+        decimal _balance;
+        public decimal Balance {
+            get {
+                if (isWinner) {
+                    this._balance += 2;
+                    isWinner = false;
+                }
+                return this._balance;
+            }
+            set {
+                this._balance = value;
+            }
+        } // the balance for this game
 
         public Boolean isWinner { get; set; } // a flag for when the lucky number matches the spin
+
+        public String GameMessage { get; set ; }
     }
 }
