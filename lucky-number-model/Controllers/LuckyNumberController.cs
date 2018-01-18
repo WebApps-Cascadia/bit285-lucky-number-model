@@ -52,7 +52,9 @@ namespace lucky_number_model.Controllers
             c = Object.Next(0, 10);
 
             // TODO: Assign the ViewBag variables these local variable values
-
+            ViewBag.A = a;
+            ViewBag.B = b;
+            ViewBag.C = c;
              
 
 
