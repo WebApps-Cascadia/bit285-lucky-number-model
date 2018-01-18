@@ -46,12 +46,14 @@ namespace lucky_number_model.Controllers
 
             // TODO: Assign a random value between 1 and 9 to three local variables, a, b, and c
             int a=0, b=0, c=0;
-
-
+            Random Object = new Random();
+            a = Object.Next(0,10);
+            b = Object.Next(0, 10);
+            c = Object.Next(0, 10);
 
             // TODO: Assign the ViewBag variables these local variable values
 
-
+             
 
 
             //Check for a winner, update Balance and the isWinner flag
