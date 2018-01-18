@@ -21,7 +21,7 @@ namespace lucky_number_model.Controllers
                 Balance = _starting_balance
             };
             // TODO: Initialize the spinner fields for the ViewBag to zero
-
+            ViewBag.A = 0; ViewBag.B = 0; ViewBag.C = 0;
             
             // Pass the Model to the View
             return View(myLuck);
