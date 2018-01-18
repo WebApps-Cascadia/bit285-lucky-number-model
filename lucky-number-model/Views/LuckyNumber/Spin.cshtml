@@ -28,12 +28,13 @@
             @Html.EditorFor(model => model.Number) 
             @Html.ValidationMessageFor(model => model.Number)
         </div>
-        <div class="gameover">@ViewBag.Error</div>
+        //  <div class="gameover">@ViewBag.Error</div>
+        <div class="gameover">@Model.GameMessage</div>
         if (Model.isWinner)
         {
             <img src="~/Images/LuckySevenExercise.jpg" style="display:block" alt="coins" />
         }
-
+        //where model gets passed from submission of this next line 
         <input type="hidden" name="Balance" value="@Model.Balance" />
     }
 </body>
