@@ -33,7 +33,7 @@ namespace lucky_number_model.Controllers
             // GAME PLAY : If a spin would cause a negative balance, send the view a "Game Over" message and reset Balance
             if (lucky.Balance <= 0)
             {
-                ViewBag.Error = "GAME OVER: Spin to try again";
+               
                 lucky.Balance = _starting_balance;
 
                 // Pass the Model to the View (this ends the method)
