@@ -9,8 +9,6 @@ namespace lucky_number_model.Controllers
 {
     public class LuckyNumberController : Controller
     {
-        static int _starting_balance = 4; // Initial bank balance
-
         [HttpGet]
         public ActionResult Spin() // runs the first time the form is loaded
         {
@@ -18,11 +16,14 @@ namespace lucky_number_model.Controllers
             LuckyNumber myLuck = new LuckyNumber
             {
                 Number = 6,
-                Balance = _starting_balance
+                Balance = 4
             };
-            // TODO: Initialize the spinner fields for the ViewBag to zero
 
-            
+            // TODO: Initialize the spinner fields for the ViewBag to zero
+            myLuck.Spinner[0] = 0;
+            myLuck.Spinner[1] = 0;
+            myLuck.Spinner[2] = 0;
+
             // Pass the Model to the View
             return View(myLuck);
         }
@@ -30,39 +31,7 @@ namespace lucky_number_model.Controllers
         [HttpPost]
         public ActionResult Spin(LuckyNumber lucky) //The Model is passed in with values from the form submission
         {
-            // GAME PLAY : If a spin would cause a negative balance, send the view a "Game Over" message and reset Balance
-            if (lucky.Balance <= 0)
-            {
-                ViewBag.Error = "GAME OVER: Spin to try again";
-                lucky.Balance = _starting_balance;
-
-                // Pass the Model to the View (this ends the method)
                 return View(lucky);
-            }
-
-            // TODO: Charge the cost of a spin (subtract 1 from the Balance)
-
-
-
-            // TODO: Assign a random value between 1 and 9 to three local variables, a, b, and c
-            int a=0, b=0, c=0;
-
-
-
-            // TODO: Assign the ViewBag variables these local variable values
-
-
-
-
-            //Check for a winner, update Balance and the isWinner flag
-            if (a== lucky.Number || b == lucky.Number || c == lucky.Number)
-            {
-                lucky.Balance += 2;
-                lucky.isWinner = true;
-            }
-
-            // Pass the Model to the View
-            return View(lucky);
         }
 
     }
