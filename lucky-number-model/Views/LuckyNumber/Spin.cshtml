@@ -1,17 +1,38 @@
 ﻿@model lucky_number_model.Models.LuckyNumber
-
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Lucky Number @Model.Number</title>
+    <title>Lucky Number SUP SUP SUP @Model.Number</title>
     <style type="text/css">
-        body{background-color:lightgoldenrodyellow;}
-        .spinner * {display: inline-block;font: bold 36px 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
-        .spinner div {background-color: yellow;border:solid thin black;margin:0 2px;}
-        .register {font:bold 18px 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:lime;background-color:#333;padding:0 4px;}
-        .gameover{font:bold 24px san-serif; color:darkred;padding:10px;}
+        body {
+            background-color: lightgoldenrodyellow;
+        }
+
+        .spinner * {
+            display: inline-block;
+            font: bold 36px 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .spinner div {
+            background-color: yellow;
+            border: solid thin black;
+            margin: 0 2px;
+        }
+
+        .register {
+            font: bold 18px 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            color: lime;
+            background-color: #333;
+            padding: 0 4px;
+        }
+
+        .gameover {
+            font: bold 24px san-serif;
+            color: darkred;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
@@ -19,16 +40,17 @@
     {
         <div class="spinner">
             <input type="submit" value="SPIN" />
-            <div>@ViewBag.A</div><div>@ViewBag.B</div><div>@ViewBag.C</div>
+            @{ int[] spinResults = Model.Spinner;}
+            <div>@spinResults[0]</div><div>@spinResults[1]</div><div>@spinResults[2]</div>
         </div>
         <h1>Lucky Number @Model.Number</h1>
         <p>Your Current Balance is: <span class="register"> $ @Model.Balance</span></p>
         <div>
             Pick your Lucky Number:
-            @Html.EditorFor(model => model.Number) 
+            @Html.EditorFor(model => model.Number)
             @Html.ValidationMessageFor(model => model.Number)
         </div>
-        <div class="gameover">@ViewBag.Error</div>
+        <div class="gameover">@Model.GameMessage</div>
         if (Model.isWinner)
         {
             <img src="~/Images/LuckySevenExercise.jpg" style="display:block" alt="coins" />
