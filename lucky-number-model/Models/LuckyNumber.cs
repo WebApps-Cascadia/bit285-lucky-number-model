@@ -13,9 +13,17 @@ namespace lucky_number_model.Models
         [Range(1, 9, ErrorMessage = "Number must be between 1 and 9")]
         public int Number { get; set; } // the user's choice of a lucky number
 
+        public string Message
+        {
+            get
+            {
+                return   "GAME OVER: Spin to try again";
+            }
+        }
         [Required]
-        public decimal Balance { get; set; } // the balance for this game
+        public decimal Balance { get; set; }
+    // the balance for this game
 
-        public Boolean isWinner { get; set; } // a flag for when the lucky number matches the spin
+    public Boolean isWinner { get; set; } // a flag for when the lucky number matches the spin
     }
 }
