@@ -15,12 +15,16 @@ namespace lucky_number_model.Controllers
         public ActionResult Spin() // runs the first time the form is loaded
         {
             //Build a default Model with some initial values 
+     
             LuckyNumber myLuck = new LuckyNumber
             {
                 Number = 6,
                 Balance = _starting_balance
             };
             // TODO: Initialize the spinner fields for the ViewBag to zero
+            ViewBag.A = 0;
+            ViewBag.B = 0;
+            ViewBag.C = 0;
 
             
             // Pass the Model to the View
@@ -33,7 +37,8 @@ namespace lucky_number_model.Controllers
             // GAME PLAY : If a spin would cause a negative balance, send the view a "Game Over" message and reset Balance
             if (lucky.Balance <= 0)
             {
-                ViewBag.Error = "GAME OVER: Spin to try again";
+      
+                ViewBag.Message=
                 lucky.Balance = _starting_balance;
 
                 // Pass the Model to the View (this ends the method)
@@ -41,11 +46,34 @@ namespace lucky_number_model.Controllers
             }
 
             // TODO: Charge the cost of a spin (subtract 1 from the Balance)
+            
+            if (! lucky.isWinner)
+            {
+               lucky.Balance -= 1;
+                
+            }
+
 
 
 
             // TODO: Assign a random value between 1 and 9 to three local variables, a, b, and c
-            int a=0, b=0, c=0;
+       
+
+            Random randint = new System.Random();
+            int a = randint.Next(1, 9);
+            int b = randint.Next(1, 9);
+            int c = randint.Next(1, 9);
+
+            ViewBag.A = a;
+            ViewBag.B = b;
+            ViewBag.C = c;
+
+
+
+
+
+
+
 
 
 
