@@ -18,11 +18,16 @@ namespace lucky_number_model.Controllers
             LuckyNumber myLuck = new LuckyNumber
             {
                 Number = 6,
-                Balance = _starting_balance
+                Balance = _starting_balance,
+     
             };
             // TODO: Initialize the spinner fields for the ViewBag to zero
-
-            
+            int a = 0;
+            ViewBag.A = a;
+            int b = 0;
+            ViewBag.B = b;
+            int c = 0;
+            ViewBag.C = c;
             // Pass the Model to the View
             return View(myLuck);
         }
@@ -33,7 +38,8 @@ namespace lucky_number_model.Controllers
             // GAME PLAY : If a spin would cause a negative balance, send the view a "Game Over" message and reset Balance
             if (lucky.Balance <= 0)
             {
-                ViewBag.Error = "GAME OVER: Spin to try again";
+                //lucky.GameMessage = "GAME OVER: Spin to try again!!!";
+              //  ViewBag.Error = "GAME OVER: Spin to try again";
                 lucky.Balance = _starting_balance;
 
                 // Pass the Model to the View (this ends the method)
@@ -41,23 +47,28 @@ namespace lucky_number_model.Controllers
             }
 
             // TODO: Charge the cost of a spin (subtract 1 from the Balance)
+            lucky.Balance =  lucky.Balance - 1;
 
 
 
             // TODO: Assign a random value between 1 and 9 to three local variables, a, b, and c
             int a=0, b=0, c=0;
-
-
+           Random rnd = new System.Random();
+             a = rnd.Next(5, 9);
+             b = rnd.Next(5, 9);
+             c = rnd.Next(5, 9);
 
             // TODO: Assign the ViewBag variables these local variable values
-
+            ViewBag.A = a;
+            ViewBag.B = b;
+            ViewBag.C = c;
 
 
 
             //Check for a winner, update Balance and the isWinner flag
             if (a== lucky.Number || b == lucky.Number || c == lucky.Number)
             {
-                lucky.Balance += 2;
+               // lucky.Balance += 2;
                 lucky.isWinner = true;
             }
 
