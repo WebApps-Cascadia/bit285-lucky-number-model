@@ -24,7 +24,7 @@ namespace lucky_number_model.Controllers
             //ViewBag.A = 0;
             //ViewBag.B = 0;
             //ViewBag.C = 0;
-
+           
             // Pass the Model to the View
             return View(myLuck);
         }
@@ -33,23 +33,23 @@ namespace lucky_number_model.Controllers
         public ActionResult Spin(LuckyNumber lucky) //The Model is passed in with values from the form submission
         {
 
-            if (lucky.Spinner[0] == lucky.Number || lucky.Spinner[1] == lucky.Number || lucky.Spinner[2] == lucky.Number)
-            {
-                lucky.Balance += 2; // move this to the smart balance property
-                lucky.isWinner = true;
-            }
+            //if (lucky.Spinner[0] == lucky.Number || lucky.Spinner[1] == lucky.Number || lucky.Spinner[2] == lucky.Number)
+            //{
+            //    lucky.Balance += 2; // move this to the smart balance property
+            //    lucky.isWinner = true;
+            //}
             lucky.Balance -= 1;
 
 
             // GAME PLAY : If a spin would cause a negative balance, send the view a "Game Over" message and reset Balance
-            if (lucky.Balance < 0)
-            {
+            //if (lucky.Balance < 0)
+            //{
 
-                lucky.Balance = 4;
+            //    lucky.Balance = _starting_balance;
 
-                // Pass the Model to the View (this ends the method)
-                return View(lucky);
-            }
+            //    // Pass the Model to the View (this ends the method)
+            //    return View(lucky);
+            //}
 
 
 

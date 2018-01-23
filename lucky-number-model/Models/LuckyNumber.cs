@@ -9,7 +9,7 @@ namespace lucky_number_model.Models
     public class LuckyNumber
     {
         private int _balance;
-        private bool _isWinner;
+        private bool _isWinner = false;
         private int[] _spinner = new int[3];
         
 
@@ -22,22 +22,16 @@ namespace lucky_number_model.Models
         public int Balance {
             get
             {
-                //if (_spinner[0] == Number || _spinner[1] == Number || _spinner[2] == Number)
-                //{
-                //    _isWinner = true;
-                //    _balance += 1;
-                //}
-                //else
-                //{
-                //    _isWinner = false;
-                //    _balance -= 1;
-                //} 
+                if (isWinner)
+                {
+                    _balance += 2;
+                }
+
                 //cannot figure out why it's not working correctly.
                 return _balance;
             }
                 set
             {
-                
                 _balance = value;
             }
                 } // the balance for this game
@@ -47,6 +41,10 @@ namespace lucky_number_model.Models
 
             get
             {
+                if (_spinner[0] == Number || _spinner[1] == Number || _spinner[2] == Number)
+                {
+                    _isWinner = true;
+                }
                 return _isWinner;
             }
                 
@@ -80,6 +78,7 @@ namespace lucky_number_model.Models
                 _spinner[0] = rnd.Next(1, 10);
                 _spinner[1] = rnd.Next(1, 10);
                 _spinner[2] = rnd.Next(1, 10);
+
                 return _spinner;
             }
                 set
